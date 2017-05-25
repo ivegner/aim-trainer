@@ -1,142 +1,149 @@
 <html><head>
-<meta name="keywords" content="aim trainer counterstrike overwatch cs:go accuracy practice">
-<meta name="description" content="Aim trainer tool for FPS games like Overwatch, Counter Strike, and others.">
-<title>Aim Trainer</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/bootstrap-slider.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.min.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.1/svg.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
-
-<script type="text/javascript" src="js/settings.js"></script>
-<link href="css/styles.css" rel="stylesheet" type="text/css">
-
-</head><body>
-<div class="navbar navbar-default navbar-static-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#"><span>Aim Trainer</span></a>
-    </div>
-    <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="active">
-          <a href="#">Home</a>
-        </li>
-        <li>
-          <a href="#">Feedback</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="section">
-  <div class="container">
-    <div class="row">
-      <div class="trainer-container col-md-8" id="tracking">
-        <div id="track-trainer">
-          <script type="text/javascript" src="js/track-trainer.js"></script>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <h1>Looking to improve your aim?</h1>
-        <p>Aiming is an integral part of playing any FPS, and whether you are a professional
-          FPS player or a casual gamer just starting out, it is vitally important
-          to keep improving it to stay ahead of the competition. However, in normal
-          game scenarios, it is hard to focus on simply getting better at aiming,
-          because there is always something else going on that you have to do - capturing
-          objectives, throwing grenades, using abilities, etc. In fact, if you total
-          up the time that you spend purely shooting at the enemy in one round, you
-          will find it to be quite little. This website provides a distilled, pure
-          aim training tool, in which the
-          <i>only</i>&nbsp;objective you have is to aim, and to aim well, providing
-          much more aiming practice per unit time than any in-game match.&nbsp;</p>
-          <h1>Instructions</h1>
-          <p class="lead">Track the red ball with your mouse.</p>
-          <ul>
-            <li>If you'd like to train the muscle memory associated with in-game shooting,
-              enable the setting below.</li>
-              <li>The presets are recommended for newcomers to the tool, and are calibrated
-                to different difficulty levels.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="panel panel-primary" id="settings">
-                <div class="panel-heading">
-                  <h4 class="panel-title">
-                    <a href="#settingsFold" data-toggle="collapse" id="settings-toggle">Settings</a>
-                  </h4>
+        <meta name="keywords" content="aim trainer counterstrike overwatch cs:go accuracy practice">
+        <meta name="description" content="Aim trainer tool for FPS games like Overwatch, Counter Strike, and others.">
+        <title>Aim Trainer</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/bootstrap-slider.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/css/bootstrap-slider.min.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.6.1/svg.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
+        <script type="text/javascript" src="js/settings.js"></script>
+        <link href="css/styles.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../css/styles.css">
+    </head><body>
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span>Aim Trainer</span></a>
                 </div>
-                <div class="panel-body collapse in" id="settingsFold">
-                  <div class="col-md-6">
-                    <div class="row" id="presets">
-                      <h4 class="text-center bold">Presets</h4>
-                      <p class="text-center">Presets are recommended for those not familiar with the tool.</p>
-                      <div class="col-sm-3">
-                        <input type="radio" id="easyPreset" name="preset">
-                        <label for="easyPreset">Easy</label>
-                      </div>
-                      <div class="col-sm-3">
-                        <input type="radio" id="mediumPreset" name="preset">
-                        <label for="mediumPreset">Medium</label>
-                      </div>
-                      <div class="col-sm-3">
-                        <input type="radio" id="hardPreset" name="preset">
-                        <label for="hardPreset">Hard</label>
-                      </div>
-                      <div class="col-sm-3">
-                        <input type="radio" id="customPreset" name="preset">
-                        <label for="customPreset">Custom</label>
-                      </div>
-
-                    </div>
-                    <div class="row" id="miscSettings">
-                      <h4 class="text-center bold">Miscellaneous</h4>
-                      <div class="col-md-12">
-                        <input type="checkbox" id="mustClick">
-                        <label for="mustClick">Must hold mouse down while tracking</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6" id="advancedSettings">
-                    <h4 class="text-center bold">Advanced Settings</h4>
-                    <div class="row">
-                    <label for="difficulty">Difficulty: <span id="difficultyVal"></span></label>
-                      <input type="text" id="difficulty" data-provide="slider" 
-                      data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5">
-                    </div>
-                    <div class="row">
-                      <label for="size">Size: <span id="sizeVal"></span></label>
-                      <input type="text" id="size" data-provide="slider" data-slider-min="10" 
-                      data-slider-max="50" data-slider-step="5" data-slider-value="30">
-                    </div>
-                    <div class="row">
-                      <label for="speed">Speed: <span id="speedVal"></span></label>
-                      <input type="text" id="speed" data-provide="slider" data-slider-min="1" data-slider-max="10" 
-                      data-slider-step="1" data-slider-value="3">
-                    </div>
-                  </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active">
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="mailto:aimtrainerapp@gmail.com">Feedback</a>
+                        </li>
+                    </ul>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="trainer-container col-md-8" id="tracking">
+                        <div id="track-trainer">
+                            <script type="text/javascript" src="js/track-trainer.js"></script>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h1>Looking to improve your aim?</h1>
+                        <p>Aiming is an integral part of playing any FPS, and whether you are a professional
+                            FPS player or a casual gamer just starting out, it is vitally important
+                            to keep improving it to stay ahead of the competition. However, in normal
+                            game scenarios, it is hard to focus on simply getting better at aiming,
+                            because there is always something else going on that you have to do - capturing
+                            objectives, throwing grenades, using abilities, etc. In fact, if you total
+                            up the time that you spend purely shooting at the enemy in one round, you
+                            will find it to be quite little. This website provides a distilled, pure
+                            aim training tool, in which the
+                            <i>only</i>&nbsp;objective you have is to aim, and to aim well, providing
+                            much more aiming practice per unit time than any in-game match.&nbsp;</p>
+                        <h1>Instructions</h1>
+                        <p class="lead">Track the red ball with your mouse.</p>
+                        <ul>
+                            <li>If you'd like to train the muscle memory associated with in-game shooting,
+                                enable the setting below.</li>
+                            <li>The presets are recommended for newcomers to the tool, and are calibrated
+                                to different difficulty levels.</li>
+                        </ul>
+                        <h1>Score:
+                            <span id="score">0</span>
+                        </h1>
+                        <h2>High score:
+                            <span id="highScoreNum">0</span>&nbsp;(<span id="highScoreMode"></span>)</h2>
+                        <button class="btn btn-default btn-lg" id="resetHighScore">Reset High Score</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-primary" id="settings">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a href="#settingsFold" data-toggle="collapse" id="settings-toggle">Settings</a>
+                                </h4>
+                            </div>
+                            <div class="panel-body collapse in" id="settingsFold">
+                                <div class="col-md-6">
+                                    <div class="row" id="presets">
+                                        <h4 class="text-center bold">Presets</h4>
+                                        <p class="text-center">Presets are recommended for those not familiar with the tool.</p>
+                                        <div class="col-sm-3">
+                                            <input type="radio" id="easyPreset" name="preset">
+                                            <label for="easyPreset">Easy</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="radio" id="mediumPreset" name="preset">
+                                        <label for="mediumPreset">Medium</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="radio" id="hardPreset" name="preset">
+                                        <label for="hardPreset">Hard</label>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="radio" id="customPreset" name="preset">
+                                        <label for="customPreset">Custom</label>
+                                    </div>
+                                </div>
+                                <div class="row" id="miscSettings">
+                                    <h4 class="text-center bold">Miscellaneous</h4>
+                                    <div class="col-md-12">
+                                        <input type="checkbox" id="mustClick">
+                                        <label for="mustClick">Must hold mouse down while tracking</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="advancedSettings">
+                                <h4 class="text-center bold">Advanced Settings</h4>
+                                <div class="row">
+                                    <label for="difficulty">Difficulty:
+                                        <span id="difficultyVal"></span>
+                                    </label>
+                                    <input type="text" id="difficulty" data-provide="slider" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="5">
+                                </div>
+                                <div class="row">
+                                    <label for="size">Size:
+                                        <span id="sizeVal"></span>
+                                    </label>
+                                    <input type="text" id="size" data-provide="slider" data-slider-min="10" data-slider-max="50" data-slider-step="5" data-slider-value="30">
+                                </div>
+                                <div class="row">
+                                    <label for="speed">Speed:
+                                        <span id="speedVal"></span>
+                                    </label>
+                                    <input type="text" id="speed" data-provide="slider" data-slider-min="1" data-slider-max="10" data-slider-step="1" data-slider-value="3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    
 
-
-    </body></html>
+</body></html>

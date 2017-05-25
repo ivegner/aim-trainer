@@ -10,21 +10,25 @@ $(document).ready(function() {
                 switch (this.id) {
                     case 'easyPreset':
                         Cookies.set("preset", "easyPreset");
+                        $("#track-trainer").data("mode", "Easy");
                         setSettingsSliders(2, 40, 2);
                         break;
 
                     case 'mediumPreset':
                         Cookies.set("preset", "mediumPreset");
-                        setSettingsSliders(5, 30, 5);
+                        $("#track-trainer").data("mode", "Medium");
+                        setSettingsSliders(5, 30, 3);
                         break;
 
                     case 'hardPreset':
                         Cookies.set("preset", "hardPreset");
-                        setSettingsSliders(8, 20, 8);
+                        $("#track-trainer").data("mode", "Hard");
+                        setSettingsSliders(7, 20, 5);
                         break;
 
                     case 'customPreset':
                         Cookies.set("preset", "customPreset");
+                        $("#track-trainer").data("mode", "Custom");
                         var c = Cookies.getJSON();
                         var settingsCookieExists = true;
                         for (var i = 0, len = settings.length; i < len; i++) {
@@ -45,6 +49,11 @@ $(document).ready(function() {
             }
         }
     );
+    $("#mustClick").change(function () {
+        if (!init){$("#track-trainer").trigger("reload")};
+        Cookies.set("mustClick", $("#mustClick").is(":checked"));
+    });
+    $("#mustClick").attr("checked", Cookies.getJSON("mustClick") || false);
 
     // Restore last chosen preset
     var savedPreset = Cookies.get("preset");
@@ -54,6 +63,22 @@ $(document).ready(function() {
     else {
         $("#easyPreset").click();
     }
+
+    var savedHighScore = Cookies.getJSON("highScore");
+    if (savedHighScore){
+        $("#highScoreNum").text(savedHighScore["score"]);
+        $("#highScoreMode").text(savedHighScore["mode"]);
+    }
+    else {
+        $("#highScoreNum").text(0);
+        $("#highScoreMode").text($("#track-trainer").data("mode"));
+    }
+    $("#resetHighScore").click(function () {
+        $("#highScoreNum").text(0);
+        $("#highScoreMode").text($("#track-trainer").data("mode"));
+        Cookies.set("highScore", {score: 0, mode: $("#track-trainer").data("mode")});
+    })
+
     init = false;
 
     // Slider binding

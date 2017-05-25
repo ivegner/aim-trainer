@@ -1,37 +1,49 @@
 $(document).ready(function() {
 
-$('#track-trainer').bind("reload", function () {
-    resetAnim();
-})
+$("#track-trainer").bind("reload", function () {
+    resetState();
+});
 
-var dim = $('#track-trainer').parent().width();
+var dim = $("#track-trainer").parent().width();
+var score = $("#score");
+var highScoreNum = $("#highScoreNum");
+// handler of the score counter interval
+var counter = null;
+//flag that tells whether app is running
+var _started = false;
 
-var difficulty = -42;
-var speed = -42;
+
+var difficulty = null;
+var speed = null;
 // max_da = maximum amount of degrees to change in one dx
-var max_da = -42;
-var size = -42;
+var max_da = null;
+var size = null;
+var mustClick = null;
 
 var color = "red";
 
-var draw = SVG('track-trainer').size(dim, dim);
-var rect = draw.rect(dim, dim).attr({ fill: '#E3E8E6' });
+var draw = SVG("track-trainer").size(dim, dim);
+var rect = draw.rect(dim, dim).attr({ fill: "#E3E8E6" });
 var target = draw.circle(1).center(dim/2, dim/2).fill(color);
 
 // Set all animation variables
-resetAnim();
+resetState();
 
 // always variable
 var angle = getRandomAngle(0, 360);
 var _smooth_factor = 0.001 * difficulty;
 
-//flag that tells whether app is running
-var _started = false;
+$("#track-trainer").bind("mouseup", function () {
+    target.fire("mouseup");
+    $("#track-trainer").data("down", false);
+});
+$("#track-trainer").bind("mousedown", function () {
+    $("#track-trainer").data("down", true)
+});
 
 // update is called on every animation step
 function update(dt) {
     // console.log(speed, difficulty, size, max_da);
-
 
     if (!_started){
         return;
@@ -78,7 +90,7 @@ function twitch(angle) {
     }
 }
 
-function resetAnim() {
+function resetState() {
     target.center(dim/2, dim/2);
     _started = false;
     size = getSettingVal("size"); 
@@ -86,6 +98,49 @@ function resetAnim() {
     speed = getSettingVal("speed");
     target.radius(size/2);
     max_da = difficulty / 10;
+    target.off();   // Unbind listeners
+    mustClick = $("#mustClick").is(":checked");
+    if (mustClick){
+        target.on("mousedown", function () {
+            if(_started){
+                counter = setInterval(function () {
+                    incrementScore();
+                }, 50);
+            }
+        });
+        target.on("mouseover", function () {
+            if(_started && $("#track-trainer").data("down")){
+                counter = setInterval(function () {
+                    incrementScore();
+                }, 50);
+            }
+        });
+        target.on("mouseup", function () {
+            clearInterval(counter);
+        });
+
+    }
+    else {
+        target.on("mouseover", function () {
+            if(_started){
+                counter = setInterval(function () {
+                    incrementScore();
+                }, 50);
+            }
+        });
+    }
+    target.on("mouseout", function () {
+        clearInterval(counter);
+    });
+    $("#score").text(0);
+    if (Cookies.getJSON("highScore")){
+        highScoreNum.text(Cookies.getJSON("highScore")["score"]);
+        $("#highScoreMode").text(Cookies.getJSON("highScore")["mode"]);
+    }
+    else {
+        highScoreNum.text(0);
+        $("#highScoreMode").text($("track-trainer").data("mode"));
+    }
     cancelAnimationFrame(animFrame);
 }
 
@@ -106,12 +161,23 @@ function checkCollision(target, move){
     return true;
 }
 
+function incrementScore () {
+    var scoreNum = parseInt(score.text());
+    var hsNum = parseInt(highScoreNum.text())
+    var mode = $("#track-trainer").data("mode");
+    console.log(mode);
+    score.text(scoreNum+1);
+    if(scoreNum > hsNum+1){
+        Cookies.set("highScore", {"score": scoreNum+1, "mode": mode});
+    }
+}
+
 // Animation
 var lastTime, animFrame;
 
 function anim_callback(ms) {
     if (window.settingsChanged){
-        resetAnim();
+        resetState();
         return;
     }
 
@@ -127,7 +193,7 @@ function anim_callback(ms) {
 }
 
 // Starts on click
-draw.on('click', function() {
+draw.on("click", function() {
     if (!_started){
         anim_callback();
         _started = true;
